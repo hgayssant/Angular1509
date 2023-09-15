@@ -1,0 +1,32 @@
+<table>
+    <thead>
+        <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of listeCitoyen">
+            <td>{{c.id}}</td>
+            <td>{{c.nom}}</td>
+            <td>{{c.prenom}}</td>
+            <td><button (click)="supprimerCitoyen(c.id)">Supprimer</button></td>
+            <td><button (click)="modifierCitoyen(c)">Modifier</button></td>
+
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<br>
+
+<form (ngSubmit)="ajouterCitoyen()">
+   <input type="hidden" name="id" [(ngModel)]="citoyen.id"> 
+    Nom : <input type="text" name="nom" [(ngModel)]="citoyen.nom">
+    Prenom : <input type="text" name="prenom" [(ngModel)]="citoyen.prenom">
+    <button type="submit">Ajouter</button>
+</form>

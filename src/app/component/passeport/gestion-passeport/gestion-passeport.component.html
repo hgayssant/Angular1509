@@ -1,0 +1,36 @@
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Numéro du passeport</th>
+            <th>propriétaire</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let p of listePasseport">
+            <td>{{p.id}}</td>
+            <td>{{p.numPass}}</td>
+            <td>{{p.citoyen.nom}} {{p.citoyen.prenom}}</td>
+            <td><button (click)="supprimerPasseport(p.id)">Supprimer</button></td>
+            <td><button>Modifier</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<br>
+
+<form (ngSubmit)="ajouterPasseport()">
+   <input type="hidden" name="id" [(ngModel)]="passeport.id"> 
+    Numero : <input type="text" name="numpass" [(ngModel)]="passeport.numPass">
+
+    
+    propriétaire : <select id="citoyen" [(ngModel)]="passeport.citoyen.id" name="citoyen">
+        <option *ngFor="let c of listeCitoyen" [value]="c.id">{{ c.nom }}</option>
+      </select>
+    <button type="submit">Ajouter</button>
+</form>
